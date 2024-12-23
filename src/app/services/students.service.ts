@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +17,36 @@ export class StudentsService {
     return this.http.post(`${this.apiUrl}/login`, user)
   }
 
+    //Check logged In
+    isLoggedIn(): boolean {
+      return !!sessionStorage.getItem('token');
+    }
+
   //register the user
   register(user:any){
     return this.http.post(`${this.apiUrl}/register`, user)
   }
 
+  //logging out user
+  logout(){
+    sessionStorage.removeItem('token')
+  }
+
+  //set user role
+  getRole(): string | null {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      // console.log(decoded);
+      
+      return decoded.role;
+    }
+    return null;
+  }
+
+  //get all students
+  getAllStudents(){
+    return this.http.get(`${this.apiUrl}`)
+  }
   
 }

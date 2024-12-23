@@ -32,9 +32,7 @@ export class TopicsComponent {
     this.topicService.getTopics(this.subjectId).subscribe({
       next : (data) => {
         this.topics = data
-        this.subjectName = this.topics[0].c_title;
         // console.log(this.subjectName);
-        
         console.log(data);
       },
       error : (err) => {
@@ -70,16 +68,20 @@ export class TopicsComponent {
 
   // delete topic
 delTopic(id:number){
-  this.topicService.deleteTopics(id).subscribe({
-    next : (data) => {
-      this.loadTopics()
-      // console.log(data);
-    },
-    error : (err) => {
-      console.log(err);
+  // confirm('Are you sure you want to delete this topic?')
+  if(confirm('Are you sure you want to delete this topic?')){
+    this.topicService.deleteTopics(id).subscribe({
+      next : (data) => {
+        this.loadTopics()
+        // console.log(data);
+      },
+      error : (err) => {
+        console.log(err);
+      }
     }
+    )
   }
-  )}
+  }
 
 selectedTopic(topic : any){
  this.topicSelected = {...topic}

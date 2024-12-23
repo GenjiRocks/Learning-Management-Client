@@ -26,7 +26,7 @@ export class CoursesService {
   }
 
   //delete a course
-  deleteCourse(id:string){
+  deleteCourse(id:number){
     return this.http.delete(`${this.apiUrl}/delete/${id}`) 
   }
 

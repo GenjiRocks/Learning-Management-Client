@@ -5,11 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegComponent } from './auth/reg/reg.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseComponent } from './subject/course/course.component';
 import { TopicsComponent } from './subject/topics/topics.component';
 import { FormsModule } from '@angular/forms';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { StudentsComponent } from './students/students.component';
+import { InterceptInterceptor } from './interceptors/intercept.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,13 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     CourseComponent,
     TopicsComponent,
+    StudentDashboardComponent,
+    StudentsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptInterceptor, multi: true },
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

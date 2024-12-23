@@ -12,15 +12,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" routerLink="courses">Courses</a>
-        <a class="nav-link" routerLink="Students">Students</a>
-        <a class="nav-link" href="#">Valuation</a>
-        <a class="nav-link" href="#">Test</a>
+        <a class="nav-link" *ngIf="userService.isLoggedIn()" aria-current="page" routerLink="courses">Courses</a>
+        <a class="nav-link" *ngIf="userService.isLoggedIn()" routerLink="studentslist">Students</a>
+        <a class="nav-link"  *ngIf="userService.isLoggedIn()">Valuation</a>
+        <a class="nav-link" *ngIf="userService.isLoggedIn()" >Test</a>
       </div>
       <div class="navbar-nav ms-auto">
-        <button class="btn btn-primary me-2" href="#">Register</button>
-        <button class="btn btn-success" href="#">Login</button>
-        <button class="btn btn-danger ms-2" href="#">Logout</button>
+        <button class="btn btn-primary me-2" *ngIf="!userService.isLoggedIn()" routerLink="register">Register</button>
+        <button class="btn btn-success" *ngIf="!userService.isLoggedIn()" routerLink="login">Login</button>
+        <button class="btn btn-danger ms-2" *ngIf="userService.isLoggedIn()" (click)="logout()"  >Logout</button>
       </div>
     </div>
   </div>

@@ -6,12 +6,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CourseComponent } from './subject/course/course.component';
 import { TopicsComponent } from './subject/topics/topics.component';
 
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { authGuard } from './auth/guard/auth.guard';
+import { StudentsComponent } from './students/students.component';
+
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path:'courses',component:CourseComponent},
-  {path:'topics/:id',component:TopicsComponent}
+  {path:'dashboard',component:DashboardComponent, canActivate:[authGuard]},
+  {path:'courses',component:CourseComponent,canActivate:[authGuard]},
+  {path:'topics/:id',component:TopicsComponent,canActivate:[authGuard]},
+  {path:'studentdashboard',component:StudentDashboardComponent},
+  {path:'studentslist',component:StudentsComponent,canActivate:[authGuard]}
 ];
 
 @NgModule({

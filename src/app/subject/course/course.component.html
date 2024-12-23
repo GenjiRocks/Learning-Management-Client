@@ -20,7 +20,7 @@
                 <td>
                     <div>
                         <button class="btn btn-primary me-3" (click)="selectedCourse(course)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
-                        <button class="btn btn-danger me-2" >Delete</button>
+                        <button class="btn btn-danger me-2" (click)="delCourse(course.id)" >Delete</button>
                         <button class="btn btn-success" (click)="viewTopics(course.id)" >View Topics</button>
                     </div>
                 </td>

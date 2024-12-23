@@ -75,6 +75,22 @@ addCourse(){
       console.log(this.course);
 }
 
+delCourse(id:number){
+  if(confirm(`Are you sure you want to delete this course?`)){
+    this.courseService.deleteCourse(id).subscribe({
+      next: (data) => {
+        this.loadCourse()
+        console.log(data);
+      },
+      error: (err) => {
+        console.log(err);
+    }
+    })
+
+  }
+ 
+}
+
 resetCourse(){
   this.course = {
     c_title :'',
@@ -82,11 +98,13 @@ resetCourse(){
   }
 }
 
-//jump to topics page of a sub
+//jump to topics of a sub
 viewTopics(id:any){
   console.log(id);
   this.router.navigate(['/topics',id])
 
 }
+
+
   
 }
