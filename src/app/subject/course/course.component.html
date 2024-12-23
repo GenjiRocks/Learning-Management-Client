@@ -1,0 +1,92 @@
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h3 class="mb-3">Course List</h3>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add" >Add Course</button>
+        <table class="table table-bordered text-center mt-2">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let course of courses; let i = index">
+                <th >{{i+1}}</th>
+                <td>{{course.c_title}}</td>
+                <td>{{course.c_desp}}</td>
+                <td>
+                    <div>
+                        <button class="btn btn-primary me-3" (click)="selectedCourse(course)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Edit</button>
+                        <button class="btn btn-danger me-2" >Delete</button>
+                        <button class="btn btn-success" (click)="viewTopics(course.id)" >View Topics</button>
+                    </div>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+
+<!-- modal for editing course -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Course</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body">
+          <div class="mb-3 px-2">
+              <label for="exampleFormControlInput1" class="form-label">Course</label>
+              <input [(ngModel)] = "courseSelected.c_title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Course Title">
+            </div>
+            <div class="mb-3 px-2">
+              <label for="exampleFormControlInput1" class="form-label">Description</label>
+              <!-- <textarea type="email" class="form-control" id="exampleFormControlInput1" placeholder="Course Description"</textarea> -->
+                <textarea [(ngModel)]="courseSelected.c_desp" class="form-control" id="exampleFormControlInput1" name="w3review" rows="4" cols="50"></textarea>
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="editCourse(courseSelected)">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal for adding the course -->
+<div class="modal fade" id="add" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Course</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="resetCourse()"></button>
+      </div>
+      <div class="modal-body">
+          <div class="mb-3 px-2">
+              <label for="exampleFormControlInput1"  class="form-label">Course</label>
+              <input [(ngModel)] = "course.c_title"    type="text" class="form-control" id="exampleFormControlInput1" placeholder="Course Title" >
+            </div>
+            <div class="mb-3 px-2">
+              <label for="exampleFormControlInput1" class="form-label">Description</label>
+              <!-- <textarea type="email" class="form-control" id="exampleFormControlInput1" placeholder="Course Description"</textarea> -->
+                <textarea [(ngModel)]="course.c_desp" class="form-control" id="exampleFormControlInput1" name="w3review" rows="4" cols="50"></textarea>
+            </div>
+           
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetCourse()">Cancel</button>
+        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addCourse()"  >Add</button>
+      </div>
+    </div>
+  </div>
+</div>
