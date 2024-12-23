@@ -48,5 +48,14 @@ export class StudentsService {
   getAllStudents(){
     return this.http.get(`${this.apiUrl}`)
   }
+
+  //delete student
+  deleteStudent(id:number){
+    return this.http.delete(`${this.apiUrl}/delete/${id}`)
+  }
   
+  //edit student data
+  editStudent(id:number, student:any){
+    return this.http.put(`${this.apiUrl}/edit/${id}`,student)
+  }
 }

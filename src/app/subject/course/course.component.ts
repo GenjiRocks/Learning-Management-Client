@@ -11,7 +11,6 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class CourseComponent {
   
   courses :any = []
-  selectCourseId : number  | null = null;
   courseSelected :any = {}
 
   course = {
