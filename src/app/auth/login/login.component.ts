@@ -26,9 +26,9 @@ export class LoginComponent {
         const role = this.studentApi.getRole()
         // console.log(role);
         if(role == 'admin'){
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['dashboard'])
         }else{
-          this.router.navigate(['/studentdashboard'])
+          this.router.navigate(['studentdashboard'])
         }
         
       },

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { StudentsComponent } from './students/students.component';
 import { InterceptInterceptor } from './interceptors/intercept.interceptor';
+import { EnrollComponent } from './enroll/enroll.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InterceptInterceptor } from './interceptors/intercept.interceptor';
     TopicsComponent,
     StudentDashboardComponent,
     StudentsComponent,
+    EnrollComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

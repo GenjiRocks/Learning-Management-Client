@@ -21,7 +21,7 @@
                     <div>
                         <button class="btn btn-primary me-3"   data-bs-toggle="modal" data-bs-target="#edit" (click)="studentSelected(student)">Edit</button>
                         <button class="btn btn-danger me-2" (click)="deleteStudent(student.id)" >Delete</button>
-                        <button class="btn btn-success"   >Assign Topics</button>
+                        <button class="btn btn-success" (click)="enrollCourse(student.id)"  >Assign Topics</button>
                     </div>
                 </td>
               </tr>

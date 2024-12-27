@@ -1,0 +1,58 @@
+<div>
+  <div class="row" style="width: 100%">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mx-auto">
+      <div class="card border shadow rounded-5 mt-5">
+        <div class="card-body">
+          <h3 class="card-title text-center">Course Enrollment</h3>
+          <div class="mb-3 px-2 mt-3">
+            <!-- <h5>Select Course</h5> -->
+            <!-- <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Select Course
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" >Action</a></li>
+                          <li><a class="dropdown-item" >Another action</a></li>
+                          <li><a class="dropdown-item" >Something else here</a></li>
+                        </ul>
+                      </div> -->
+
+            <select
+              (change)="onCourseSelected($event)"
+              class="form-select w-50"
+              aria-label="Default select example"
+            >
+              <option selected>Select the Course</option>
+              <option *ngFor="let course of courses" value="{{ course.id }}">
+                {{ course.c_title }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 px-2" *ngIf="selectedCourse">
+            <h5>Select Topics</h5>
+            <div class="form-check" *ngFor="let topic of topics">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="topic.id"
+                (click)="assignTopic(topic.id)"
+                id="flexCheckDefault"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                {{ topic.t_title }}
+              </label>
+            </div>
+          </div>
+          <div
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <button class="btn btn-warning me-3" (click)="clearAll()">Cancel</button>
+            <button class="btn btn-success" (click)="assignCourse()" >Assign</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

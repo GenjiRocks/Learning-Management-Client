@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StudentsService } from '../services/students.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -16,7 +17,7 @@ export class StudentsComponent {
     password:''
   }
 
-  constructor(private studentService : StudentsService){}
+  constructor(private studentService : StudentsService, private router: Router){}
 
   ngOnInit(){
     this.loadStudents()
@@ -88,6 +89,11 @@ updateStudent(student:any){
     }
   })
   
+}
+
+enrollCourse(id:number){
+  // console.log(id);
+  this.router.navigate(['/enrollment',id])
 }
 
 

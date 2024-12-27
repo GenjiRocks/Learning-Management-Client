@@ -8,19 +8,19 @@
                   <h3 class="card-title text-center">Register </h3>
                   <div class="mb-3 px-2">
                     <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" placeholder="name@example.com">
+                    <input type="email" class="form-control" [(ngModel)]="email" placeholder="name@example.com">
                   </div>
                   <div class="mb-3 px-2">
                     <label for="exampleFormControlInput1" class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="text" class="form-control" [(ngModel)]="name" placeholder="Name">
                   </div>
                   <div class="mb-3 px-2">
                     <label for="exampleFormControlInput1" class="form-label">Password</label>
-                    <input type="password" class="form-control"  placeholder="Password">
+                    <input type="password" class="form-control"  [(ngModel)]="password" placeholder="Password">
                   </div>
                   
                   <div style="display: flex; justify-content: center; align-items: center;">
-                    <button href="#" class="btn btn-primary" >Register</button>
+                    <button class="btn btn-primary" (click)="register()" >Register</button>
                   </div>
                  
                 </div>

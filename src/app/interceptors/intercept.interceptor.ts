@@ -28,7 +28,7 @@ export class InterceptInterceptor implements HttpInterceptor {
       
       return next.handle(clonedRequest);
     }else{
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
     
     // Pass the original request if no token exists
