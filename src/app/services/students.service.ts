@@ -44,6 +44,17 @@ export class StudentsService {
     return null;
   }
 
+  getId(): string | null {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      // console.log(decoded);
+
+      return decoded.id;
+    }
+    return null;
+  }
+
   //get all students
   getAllStudents(){
     return this.http.get(`${this.apiUrl}`)

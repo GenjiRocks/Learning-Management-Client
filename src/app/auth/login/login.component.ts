@@ -18,15 +18,20 @@ export class LoginComponent {
     this.studentApi.login({email:this.email,password:this.password}).subscribe({
       next: (res:any) =>{
         sessionStorage.setItem('token',res.token);
-        console.log(res.token);
+        // console.log(res.token);
         
         console.log(res);
 
         //get user role
         const role = this.studentApi.getRole()
+        const ID = this.studentApi.getId()
+        // console.log(ID);
+        
         // console.log(role);
         if(role == 'admin'){
           this.router.navigate(['dashboard'])
+          console.log(ID);
+          
         }else{
           this.router.navigate(['studentdashboard'])
         }

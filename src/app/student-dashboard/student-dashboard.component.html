@@ -1,1 +1,32 @@
 <h1>This Student Dashboard</h1>
+
+<div class="row mt-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h3 class="mb-3">Course List</h3>
+        <table class="table table-bordered text-center mt-2">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Course</th>
+                <th scope="col">Topics</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let course of courses; let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ course.c_title }}</td>
+                    <td>
+                      <ul>
+                        <li *ngFor="let topic of course.topics">{{ topic }}</li>
+                      </ul>
+                    </td>
+                    <td>test</td>
+                  </tr>
+              
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-3"></div>
+</div>

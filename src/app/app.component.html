@@ -14,8 +14,8 @@
       <div class="navbar-nav">
         <a class="nav-link" *ngIf="userService.isLoggedIn()" aria-current="page" routerLink="courses">Courses</a>
         <a class="nav-link" *ngIf="userService.isLoggedIn() && userService.getRole() == 'admin'" routerLink="studentslist">Students</a>
-        <a class="nav-link"  *ngIf="userService.isLoggedIn()">Valuation</a>
-        <a class="nav-link" *ngIf="userService.isLoggedIn()" >Test</a>
+        <!-- <a class="nav-link"  *ngIf="userService.isLoggedIn()">Valuation</a> -->
+        <!-- <a class="nav-link" *ngIf="userService.isLoggedIn()" >Test</a> -->
       </div>
       <div class="navbar-nav ms-auto">
         <button class="btn btn-primary me-2" *ngIf="!userService.isLoggedIn()" routerLink="register">Register</button>

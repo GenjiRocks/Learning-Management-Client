@@ -14,4 +14,9 @@ export class EnrollService {
   enrollStudent(data:any){
     return this.http.post(`${this.apiUrl}/add`,data)
   }
+
+  //assigned courses
+  assignedCourses(id:number){
+    return this.http.get(`${this.apiUrl}/userCourses/${id}`)
+  }
 }
